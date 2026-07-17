@@ -23,6 +23,6 @@ jobs:
 
       - name: Code static code to s3
         run: |
-          aws s3 sync ./s3://gha-practice/ \
+          aws s3 sync . s3://gha-practice/ \
           --exclude "*" \
           --include "index.html"
