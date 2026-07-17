@@ -1,10 +1,10 @@
-name: gha7
+name: gha9
 
 on:
   workflow_dispatch:
 
 jobs:
-  deploy:
+ deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -15,5 +15,14 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_ID }}
           aws-region: ap-south-1
+
+      - name: Verify AWS
+        run: aws sts get-caller-identity
+
+      - name: Code static code to s3
+        run: |
+          aws s3 sync ./s3://gha-practice/ \
+          --exclude "*" \
+          --include "index.html"
