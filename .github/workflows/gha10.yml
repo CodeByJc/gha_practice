@@ -4,6 +4,8 @@ env:
   APP_ENV : "dev"
 jobs:
   env:
+    env:
+      APP_ENV : "RAJ"
     runs-on: ubuntu-latest
     steps:
       - name: Connectig to env
