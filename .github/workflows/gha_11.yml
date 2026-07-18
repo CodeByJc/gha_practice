@@ -1,0 +1,14 @@
+name: input demo
+on: 
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: choose the envirnment to deploy
+        required: true
+        default: dev
+jobs:
+  inpu-demo :
+    runs-on: ubuntu-latest
+    steps:
+      - name: hello
+        run : echo "Jaineel"
