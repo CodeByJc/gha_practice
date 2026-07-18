@@ -1,11 +1,19 @@
-name: input demo
+name: input demo with choice
 on: 
   workflow_dispatch:
     inputs:
       environment:
-        description: choose the envirnment to deploy
+        description: "choose the envirnment to deploy"
         required: true
         default: dev
+        type: choice
+        options:
+          - dev
+          - test
+          - prod
+      tags:
+        description: choose the git tag to deploy
+        required: true
 jobs:
   inpu-demo :
     runs-on: ubuntu-latest
